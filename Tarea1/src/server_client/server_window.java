@@ -1,5 +1,6 @@
 package server_client;
 import javax.swing.*;
+import java.awt.*;
 
 public class server_window extends JFrame{
     private final int with = 650, height = 650;
