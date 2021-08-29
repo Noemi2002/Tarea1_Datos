@@ -22,7 +22,6 @@ public class Main extends JFrame {
      *
      */
     public static void main(String[] args) {
-
         client_window window1 = new client_window();
         SwingUtilities.invokeLater(new Runnable() {
             @Override

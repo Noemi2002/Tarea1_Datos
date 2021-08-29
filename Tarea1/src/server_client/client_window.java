@@ -3,13 +3,21 @@ package server_client;
 //Importaciones
 import javax.swing.*;
 import java.awt.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.net.Socket;
+import java.net.SocketOption;
 
 
 public class client_window extends JFrame {
+
+    static Socket s;
+    static DataInputStream din;
+    static DataOutputStream dout;
+
 
     public client_window() {
         this.setTitle("Client");
@@ -62,14 +70,38 @@ public class client_window extends JFrame {
 
         };
 
+        ActionListener enviar_mensaje = e -> {
+
+            try{
+                String msg_out = "";
+                msg_out = chatting.getText().trim();
+                dout.writeUTF(msg_out);
+            } catch (Exception ioException) {
+            }
+
+        };
+
         called_button.addActionListener(escuchar_servidor);
         this.setVisible(true);
+
+        try {
+            s = new Socket("localhost", 8080);
+            din = new DataInputStream(s.getInputStream());
+            dout = new DataOutputStream(s.getOutputStream());
+            String msgin = "";
+            while(!msgin.equals("exit")){
+                msgin = din.readUTF();
+                seeMessages.setText(seeMessages.getText().trim()+"\n Server:\t"+msgin);
+            }
+
+        } catch (IOException e) {
+        }
     }
 
-    public static void main(String[] args) {
 
-        client_window window1 = new client_window();
+
     }
 
-}
+
+
 

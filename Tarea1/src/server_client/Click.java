@@ -20,8 +20,6 @@ public class Click {
         String p;
         serverr result;
 
-        p = JOptionPane.showInputDialog("Ingrese el puerto: ");
-        port = Integer.parseInt(p);
         v = JOptionPane.showInputDialog("Ingrese el valor del producto: ");
         value = Integer.parseInt(v);
         pe = JOptionPane.showInputDialog("Ingrese el peso del producto: ");
@@ -29,9 +27,9 @@ public class Click {
         pi = JOptionPane.showInputDialog("Ingrese el porcentaje correspondiente a impuestos. Recuerde que debe ser un número entero: ");
         tax = Integer.parseInt(pi);
 
-        Socket client_socket=new Socket("localhost", port);
+       // Socket client_socket=new Socket("localhost", port);
         //serverr.money(value, weigth, tax);
-        client_socket.close();
+        //client_socket.close();
 
         //result = new serverr(value, weigth, tax);
     }
