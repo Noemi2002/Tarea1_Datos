@@ -14,6 +14,7 @@ import java.awt.*;
 import java.io.IOException;
 
 
+//
 public class Main extends JFrame {
 
     /**
@@ -21,12 +22,13 @@ public class Main extends JFrame {
      * Esta clase crea dos instancias cliente y una servidor en un mismo run
      *
      */
-    public static void main(String[] args) {
-        client_window window1 = new client_window();
+    public static void main(String[] args) throws IOException {
+        serverr servidor2 = new serverr();
+        Main_Window window1 = new Main_Window();
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                client_window window2 = new client_window();
+                Main_Window window2 = new Main_Window();
                 window2.setLocation(650, 35);
                 window2.setVisible(true);
             }
