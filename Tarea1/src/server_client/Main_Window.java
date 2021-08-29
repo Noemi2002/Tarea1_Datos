@@ -1,3 +1,11 @@
+/**
+ *
+ * @author Noemí Vargas
+ *
+ * Esta clase contiene las características de la GUI
+ *
+ */
+
 package server_client;
 
 //Imports
@@ -40,9 +48,9 @@ public class Main_Window extends JFrame{
 
             //Texto de las etiquetas
             instrucion.setText("Enter the data:");
-            costLabel.setText("Product cost:");
-            weightLabel.setText("Product weight:");
-            taxLabel.setText("Product tax:");
+            costLabel.setText("Cost:");
+            weightLabel.setText("Weight:");
+            taxLabel.setText("Tax:");
 
             //Campos de texto
             JTextArea seeMessages = new JTextArea();
@@ -92,14 +100,14 @@ public class Main_Window extends JFrame{
                         double num = servidor1.operation(valor,impuesto, peso); //Si los datos son números, se envían a la función correspodiente
 
                         //Respuestas
-                        seeMessages.append("Los datos ingresados son:" +"\n");
-                        seeMessages.append("Precio del producto: "+ Integer.valueOf(chat_cost.getText())+"\n");
-                        seeMessages.append("Peso del producto: "+ Integer.valueOf(chat_weight.getText())+ "\n");
-                        seeMessages.append("Impuesto: "+ Integer.valueOf(chat_tax.getText())+ "%"+"\n");
-                        seeMessages.append("El monto final del producto es: "+ String.valueOf(num)+"\n\n");
+                        seeMessages.setText("The data entered is:" +"\n");
+                        seeMessages.append("Product price: "+ Integer.valueOf(chat_cost.getText())+"\n");
+                        seeMessages.append("Product weight: "+ Integer.valueOf(chat_weight.getText())+ "\n");
+                        seeMessages.append("Tax: "+ Integer.valueOf(chat_tax.getText())+ "%"+"\n");
+                        seeMessages.append("The final product price is: "+ String.valueOf(num)+"\n\n");
                     }catch(NumberFormatException e1) //Si no son números manda un mensaje
                     {
-                        JOptionPane.showMessageDialog(rootPane, "Ingresa solo números");
+                        JOptionPane.showMessageDialog(rootPane, "Enter only numbers");
                     }
                 }
             };

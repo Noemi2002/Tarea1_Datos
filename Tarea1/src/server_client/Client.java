@@ -1,3 +1,11 @@
+/**
+ *
+ * @author Noemí Vargas
+ *
+ * Esta clase habilita la conexión con sockets desde el cliente
+ *
+ */
+
 package server_client;
 
 import java.io.*;
