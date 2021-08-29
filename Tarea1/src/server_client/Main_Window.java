@@ -1,18 +1,23 @@
 package server_client;
 
+//Imports
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
+//Clase con aspectos generales de la vetana
 public class Main_Window extends JFrame{
+
+    //Variables
     private JTextField chat_cost;
     private JTextField chat_weight;
     private JTextField chat_tax;
 
-
+        //Función con la ventana
         public Main_Window() {
-        serverr servidor1 = new serverr();
-            this.setTitle("Client");
+        serverr servidor1 = new serverr(); //Se habilita el server
 
+            //Aspectos generales
+            this.setTitle("Client");
             int x = 40;
             int y = 35;
             this.setLocation(x, y);
@@ -27,25 +32,26 @@ public class Main_Window extends JFrame{
             panel1.setLayout(null); //Desactivar el diseño del panel
             this.add(panel1);
 
-
+            //Creación de etiquetas
             JLabel instrucion = new JLabel();
             JLabel costLabel = new JLabel();
             JLabel weightLabel = new JLabel();
             JLabel taxLabel = new JLabel();
 
+            //Texto de las etiquetas
             instrucion.setText("Enter the data:");
             costLabel.setText("Product cost:");
             weightLabel.setText("Product weight:");
             taxLabel.setText("Product tax:");
 
-
+            //Campos de texto
             JTextArea seeMessages = new JTextArea();
             chat_cost = new JTextField();
             chat_weight = new JTextField();
             chat_tax = new JTextField();
             JButton called_button = new JButton("Start Transfer");
 
-
+            //Posiciones
             seeMessages.setBounds(40, 10, 500, 350);
             seeMessages.setEditable(false);
 
@@ -61,7 +67,7 @@ public class Main_Window extends JFrame{
 
             called_button.setBounds(380, 400, 180, 200);
 
-
+            //Se agregan las etiquetas, el botón y los campos de texto
             panel1.add(called_button);
             panel1.add(seeMessages);
             panel1.add(instrucion);
@@ -72,24 +78,46 @@ public class Main_Window extends JFrame{
             panel1.add(chat_weight);
             panel1.add(chat_tax);
 
+            //Función del botón
             ActionListener escuchar_servidor = e -> {
-                //if (Integer.valueOf(chat_cost.getText()) && Integer.valueOf(chat_tax.getText()) && Integer.valueOf(chat_weight.getText()) != int){
-                  //  seeMessages.append("Los datos ingresados no son válidos");
-                //}
-                double num = servidor1.operation(Integer.valueOf(chat_cost.getText()),Integer.valueOf(chat_tax.getText()), Integer.valueOf(chat_weight.getText()));
-                seeMessages.append("Los datos ingresados son:" +"\n");
-                seeMessages.append("Precio del producto: "+ Integer.valueOf(chat_cost.getText())+"\n");
-                seeMessages.append("Peso del producto: "+ Integer.valueOf(chat_weight.getText())+ "\n");
-                seeMessages.append("Impuesto: "+ Integer.valueOf(chat_tax.getText())+ "%"+"\n");
-                seeMessages.append("El monto final del producto es: "+ String.valueOf(num));
+
+                {
+                    try //En este try se verifica que los datos sean números
+                    {
+                        seeMessages.setText(null);
+                        int peso =Integer.parseInt(chat_weight.getText());
+                        int valor =Integer.parseInt(chat_cost.getText());
+                        int impuesto =Integer.parseInt(chat_tax.getText());
+
+                        double num = servidor1.operation(valor,impuesto, peso); //Si los datos son números, se envían a la función correspodiente
+
+                        //Respuestas
+                        seeMessages.append("Los datos ingresados son:" +"\n");
+                        seeMessages.append("Precio del producto: "+ Integer.valueOf(chat_cost.getText())+"\n");
+                        seeMessages.append("Peso del producto: "+ Integer.valueOf(chat_weight.getText())+ "\n");
+                        seeMessages.append("Impuesto: "+ Integer.valueOf(chat_tax.getText())+ "%"+"\n");
+                        seeMessages.append("El monto final del producto es: "+ String.valueOf(num)+"\n\n");
+                    }catch(NumberFormatException e1) //Si no son números manda un mensaje
+                    {
+                        JOptionPane.showMessageDialog(rootPane, "Ingresa solo números");
+                    }
+                }
             };
 
-            called_button.addActionListener(escuchar_servidor);
-            this.setVisible(true);
+
+            called_button.addActionListener(escuchar_servidor); //Se le agrega funcionalidad al botón
+            this.setVisible(true); //Se hace visible la interfaz
         }
 
 
 
-    }
+        }
+
+
+
+
+
+
+
 
 

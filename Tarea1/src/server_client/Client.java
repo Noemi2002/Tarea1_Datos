@@ -6,21 +6,18 @@ import java.util.Scanner;
 
 
 
-
+    //Clase Cliente
     public class Client extends Main_Window{
 
 
 
 
         public static void main(String[] args){
-            Main_Window client_Window = new Main_Window();
-            DataInputStream in;
-            DataOutputStream out;
             try{
-                Socket sc = new Socket("localhost", 8080);
+                Socket sc = new Socket("localhost", 8080); //Se abre un socket para la comunicación
                 sc.close();
 
-            } catch (Exception e) {
+            } catch (Exception e) { //En caso de error de comunicación
                 e.printStackTrace();
             }
 
