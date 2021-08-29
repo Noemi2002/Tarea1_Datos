@@ -92,7 +92,7 @@ public class Main_Window extends JFrame{
                 {
                     try //En este try se verifica que los datos sean números
                     {
-                        seeMessages.setText(null);
+                        seeMessages.setText(null); //Para que el texto se este actualizando
                         int peso =Integer.parseInt(chat_weight.getText());
                         int valor =Integer.parseInt(chat_cost.getText());
                         int impuesto =Integer.parseInt(chat_tax.getText());
