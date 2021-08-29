@@ -107,7 +107,7 @@ public class Main_Window extends JFrame{
                         seeMessages.append("The final product price is: "+ String.valueOf(num)+"\n\n");
                     }catch(NumberFormatException e1) //Si no son números manda un mensaje
                     {
-                        JOptionPane.showMessageDialog(rootPane, "Enter only numbers");
+                        JOptionPane.showMessageDialog(rootPane, "Enter only numbers and fill all the spaces");
                     }
                 }
             };
